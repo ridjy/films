@@ -1,98 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ma page web avec Bootstrap</title>
-  <!-- Ajoutez les liens vers les fichiers CSS de Bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    /* Ajoutez ici votre propre CSS personnalisé */
-    body.dark-mode {
-      background-color: #1a1a1a;
-      color: #ffffff;
-    }
-  </style>
-</head>
-<body>
+{% extends 'base.html.twig' %}
 
-  <!-- Barre de navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Mon Site</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Rechercher">
-            <button class="btn btn-primary my-2 my-sm-0" type="submit">Rechercher</button>
-          </form>
-        </li>
-        <li class="nav-item">
-          <div class="custom-control custom-switch ml-3">
-            <input type="radio" class="custom-control-input" id="darkModeSwitch" name="darkModeSwitch">
-            <label class="custom-control-label" for="darkModeSwitch">Mode sombre</label>
-          </div>
-        </li>
-      </ul>
+{% block title %}Ma page!{% endblock %}
+
+{% block body %}
+    <header class="bg-white">
+        <div class="container d-flex justify-content-between align-items-center py-3">
+        <div class="logo">
+            <img src="logo.png" alt="Logo" width="50">
+        </div>
+        <div class="search-bar rounded-pill bg-light px-3 py-1">
+            <input type="text" class="form-control border-0 bg-transparent" placeholder="Recherche">
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="darkModeSwitch">
+            <label class="form-check-label" for="darkModeSwitch">Mode sombre</label>
+        </div>
+        </div>
+    </header>
+
+    <div class="container py-5">
+        <div class="row">
+        <div class="col-md-4">
+            <img src="image.jpg" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-8">
+            <h1>Titre</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sollicitudin augue id feugiat condimentum. Donec tincidunt rutrum varius. Nulla facilisi. In vestibulum hendrerit vestibulum. Suspendisse non ligula consectetur, lobortis metus vitae, posuere sapien. Quisque vestibulum, dolor eu vulputate lacinia, purus ipsum cursus libero, eu consequat est purus at elit.</p>
+            <ul>
+            <li>Commentaire 1</li>
+            <li>Commentaire 2</li>
+            <li>Commentaire 3</li>
+            </ul>
+            <form>
+            <div class="form-group">
+                <label for="comment">Ajouter un commentaire :</label>
+                <textarea class="form-control" id="comment" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+            </form>
+        </div>
+        </div>
     </div>
-  </nav>
 
-  <!-- Section du titre -->
-  <section class="container mt-4">
-    <h1 class="text-primary">Titre de la page</h1>
-  </section>
-
-  <!-- Section du synopsis -->
-  <section class="container mt-4">
-    <h2 class="text-info">Synopsis</h2>
-    <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fermentum interdum tristique. Ut auctor dolor ut nibh hendrerit, et dignissim mi facilisis. Nam facilisis mauris vel commodo iaculis. Quisque maximus tristique feugiat. Donec sed ullamcorper nisl. Sed eget ante tincidunt, congue quam eu, malesuada sem.</p>
-  </section>
-
-  <!-- Section de l'image -->
-  <section class="container mt-4 text-center">
-    <img src="https://via.placeholder.com/800x400" alt="Image" class="img-fluid">
-  </section>
-
-  <!-- Section des commentaires -->
-  <section class="container mt-4">
-    <h2 class="text-success">Commentaires</h2>
-    <form>
-      <div class="form-group">
-        <label for="nom">Nom</label>
-        <input type="text" class="form-control" id="nom">
-      </div>
-      <div class="form-group">
-        <label for="commentaire">Commentaire</label>
-        <textarea class="form-control" id="commentaire" rows="3"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Soumettre</button>
-    </form>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer bg-secondary mt-4">
-    <div class="container text-center">
-      <p class="text-light">Mon footer</p>
-    </div>
+    <footer class="bg-dark text-light py-3">
+        <div class="container d-flex justify-content-between">
+        <div>&copy; 2023 Mon site. Tous droits réservés.</div>
+        <div>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        </div>
   </footer>
-
-  <!-- Ajoutez les scripts JavaScript de Bootstrap -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
-    // Code JavaScript pour basculer en mode sombre
-    document.getElementById("darkModeSwitch").addEventListener("change", function() {
-      var body = document.body;
-      if (this.checked) {
-        body.classList.add("dark-mode");
-      } else {
-        body.classList.remove("dark-mode");
-      }
-    });
-  </script>
-</body>
-</html>
+{% endblock %}
